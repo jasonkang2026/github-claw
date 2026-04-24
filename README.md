@@ -1,2 +1,16 @@
-# github-claw
-github-claw
+# github-claw — 个人 AI 工作空间
+
+这个仓库是一个以 GitHub Copilot 为核心的**长期个人 AI 工作空间**，由驻留 AI 助手 **Claw** 维护。
+
+## 文件结构
+
+| 文件/目录 | 说明 |
+|-----------|------|
+| `AGENTS.md` | **核心**：AI 助手的角色定义、工作方式与规则 |
+| `MEMORY.md` | 长期记忆：偏好、约定、积累的知识 |
+| `memory/LOG.md` | 任务日志：每次任务完成后的简短记录 |
+| `memory/` | 可按需扩展的记忆目录 |
+
+## 如何使用
+
+在新的 Copilot 对话中，让 AI 先读取 `AGENTS.md` 和 `MEMORY.md`，即可恢复角色与工作状态，实现跨对话的持续协作。
