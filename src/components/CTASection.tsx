@@ -1,5 +1,17 @@
 "use client";
 
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
 export default function CTASection() {
   return (
     <section className="relative py-24 px-4 sm:px-6">
@@ -31,16 +43,22 @@ export default function CTASection() {
             }}
           />
 
-          <div className="relative z-10">
-            <div className="text-6xl mb-6 float-animation">🚀</div>
-            <h2 className="section-heading text-white mb-4">
+          <motion.div
+            className="relative z-10"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.div variants={fadeUp} className="text-6xl mb-6 float-animation">🚀</motion.div>
+            <motion.h2 variants={fadeUp} className="section-heading text-white mb-4">
               加入 <span className="gradient-text">28,000+</span> 开发者
-            </h2>
-            <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
               一起探索 AI 技术的无限可能，从入门到变现，鱼皮陪你全程走过
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <a
                 href="https://ai.codefather.cn"
                 target="_blank"
@@ -65,17 +83,18 @@ export default function CTASection() {
                 </svg>
                 ⭐ Star 支持项目
               </a>
-            </div>
+            </motion.div>
 
             {/* Social links */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <motion.div variants={stagger} className="flex flex-wrap justify-center gap-4">
               {[
                 { icon: "📱", label: "关注公众号", sub: "程序员鱼皮", color: "#10b981" },
                 { icon: "🎬", label: "B站关注", sub: "@程序员鱼皮", color: "#00b5e2" },
                 { icon: "💬", label: "加入交流群", sub: "一起学AI", color: "#f59e0b" },
               ].map((social, i) => (
-                <div
+                <motion.div
                   key={i}
+                  variants={fadeUp}
                   className="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
                   style={{
                     background: "rgba(255,255,255,0.04)",
@@ -92,10 +111,10 @@ export default function CTASection() {
                     <div className="text-xs font-medium text-white">{social.label}</div>
                     <div className="text-xs text-slate-500">{social.sub}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

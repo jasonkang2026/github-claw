@@ -1,5 +1,17 @@
 "use client";
 
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
 const updates = [
   {
     date: "2026-04",
@@ -74,9 +86,15 @@ export default function ChangelogSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div variants={fadeUp} className="text-center mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
             style={{
@@ -93,7 +111,7 @@ export default function ChangelogSection() {
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             跟踪每次重要更新，确保你获得最新、最实用的 AI 知识
           </p>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
@@ -108,7 +126,7 @@ export default function ChangelogSection() {
 
           <div className="space-y-8">
             {updates.map((update, i) => (
-              <div key={i} className="relative flex gap-6 sm:gap-8">
+              <motion.div key={i} variants={fadeUp} className="relative flex gap-6 sm:gap-8">
                 {/* Dot */}
                 <div
                   className="relative flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-xl sm:text-2xl z-10"
@@ -161,13 +179,13 @@ export default function ChangelogSection() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* View all */}
-        <div className="text-center mt-10">
+        <motion.div variants={fadeUp} className="text-center mt-10">
           <a
             href="https://github.com/liyupi/ai-guide/commits"
             target="_blank"
@@ -180,8 +198,8 @@ export default function ChangelogSection() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

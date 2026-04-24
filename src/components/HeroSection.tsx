@@ -1,6 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
 
 interface CounterProps {
   end: number;
@@ -126,35 +137,40 @@ export default function HeroSection() {
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+        >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium mb-8 glass-card neon-border">
+        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium mb-8 glass-card neon-border">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="text-slate-300">完全免费开放 · 持续更新中</span>
           <span className="tag-badge" style={{ borderColor: "#f59e0b44", color: "#fbbf24", background: "rgba(245,158,11,0.1)" }}>
             🔥 HOT
           </span>
-        </div>
+        </motion.div>
 
         {/* Main heading */}
-        <h1 className="section-heading text-white mb-6" style={{ letterSpacing: "-0.02em" }}>
+        <motion.h1 variants={fadeUp} className="section-heading text-white mb-6" style={{ letterSpacing: "-0.02em" }}>
           程序员鱼皮的
           <br />
           <span className="gradient-text">AI 知识库</span>
-        </h1>
+        </motion.h1>
 
         {/* Sub heading */}
-        <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
+        <motion.p variants={fadeUp} className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
           汇总整合热门 AI 工具与教程，包括
           <span className="text-indigo-400 font-medium"> Vibe Coding</span>、
           <span className="text-purple-400 font-medium"> DeepSeek</span>、
           <span className="text-cyan-400 font-medium"> 提示词大全</span>等
-        </p>
-        <p className="text-base text-slate-500 max-w-2xl mx-auto mb-12">
+        </motion.p>
+        <motion.p variants={fadeUp} className="text-base text-slate-500 max-w-2xl mx-auto mb-12">
           减少信息差，让每个人都能享受 AI 技术红利。彻底免费 · 社区共建 · 持续更新
-        </p>
+        </motion.p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <a
             href="https://ai.codefather.cn"
             target="_blank"
@@ -175,13 +191,14 @@ export default function HeroSection() {
             </svg>
             Star on GitHub
           </a>
-        </div>
+        </motion.div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <motion.div variants={stagger} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={fadeUp}
               className="glass-card p-4 sm:p-6 text-center hover:scale-105 transition-transform duration-300"
             >
               <div className="text-3xl mb-2">{stat.icon}</div>
@@ -192,9 +209,10 @@ export default function HeroSection() {
                 <Counter end={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-xs text-slate-500">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

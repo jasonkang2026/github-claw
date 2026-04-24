@@ -1,6 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
 // Simulated star growth data
 const starData = [
@@ -285,9 +296,15 @@ export default function GrowthSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <motion.div
+        className="relative z-10 max-w-6xl mx-auto"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div variants={fadeUp} className="text-center mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
             style={{
@@ -304,13 +321,14 @@ export default function GrowthSection() {
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             从零起步，用数据证明 AI Guide 的价值与影响力
           </p>
-        </div>
+        </motion.div>
 
         {/* Achievement cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <motion.div variants={stagger} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {achievements.map((a, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={fadeUp}
               className="glass-card p-5 text-center hover:-translate-y-1 transition-transform duration-300"
               style={{
                 background: `${a.color}08`,
@@ -326,12 +344,12 @@ export default function GrowthSection() {
               </div>
               <div className="text-sm font-medium text-white mb-1">{a.label}</div>
               <div className="text-xs text-slate-500">{a.sub}</div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Star history chart */}
-        <div className="glass-card p-6 sm:p-8">
+        <motion.div variants={fadeUp} className="glass-card p-6 sm:p-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-lg font-bold text-white mb-1">⭐ GitHub Stars 增长历史</h3>
@@ -347,10 +365,10 @@ export default function GrowthSection() {
             </a>
           </div>
           <StarChart />
-        </div>
+        </motion.div>
 
         {/* Trending badges */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <motion.div variants={stagger} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             {
               icon: "🔥",
@@ -371,8 +389,9 @@ export default function GrowthSection() {
               color: "#10b981",
             },
           ].map((item, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={fadeUp}
               className="glass-card p-5 flex items-start gap-4"
               style={{
                 borderColor: `${item.color}22`,
@@ -389,10 +408,10 @@ export default function GrowthSection() {
                 <div className="font-semibold text-white text-sm mb-1">{item.title}</div>
                 <div className="text-xs text-slate-400">{item.desc}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -11,11 +11,8 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main
-      style={{
-        backgroundColor: "#050816",
-        minHeight: "100vh",
-        position: "relative",
-      }}
+      className="min-h-screen relative"
+      style={{ backgroundColor: "var(--bg)" }}
     >
       <ParticleBackground />
       <div style={{ position: "relative", zIndex: 10 }}>

@@ -1,5 +1,17 @@
 "use client";
 
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 const roadmapItems = [
   {
     phase: "Phase 1",
@@ -83,9 +95,15 @@ export default function RoadmapSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <motion.div
+        className="relative z-10 max-w-6xl mx-auto"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div variants={fadeUp} className="text-center mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
             style={{
@@ -102,7 +120,7 @@ export default function RoadmapSection() {
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             从零基础到 AI 变现，完整覆盖每个学习阶段
           </p>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
@@ -121,8 +139,9 @@ export default function RoadmapSection() {
               const isRight = i % 2 === 0;
 
               return (
-                <div
+                <motion.div
                   key={i}
+                  variants={fadeUp}
                   className={`relative flex items-start gap-6 md:gap-0 ${
                     isRight ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -187,12 +206,12 @@ export default function RoadmapSection() {
 
                   {/* Spacer for opposite side */}
                   <div className="hidden md:block w-5/12" />
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

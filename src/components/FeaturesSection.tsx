@@ -1,5 +1,17 @@
 "use client";
 
+import { motion, type Variants } from "framer-motion";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
 const features = [
   {
     icon: "🔥",
@@ -81,9 +93,15 @@ export default function FeaturesSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div variants={fadeUp} className="text-center mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
             style={{
@@ -100,13 +118,14 @@ export default function FeaturesSection() {
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             从入门到变现，覆盖 AI 学习的每个阶段，帮你构建完整的 AI 知识体系
           </p>
-        </div>
+        </motion.div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={fadeUp}
               className="glass-card p-6 group cursor-pointer transition-all duration-300 hover:-translate-y-1"
               style={{ background: feature.bgAccent }}
             >
@@ -161,12 +180,13 @@ export default function FeaturesSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Highlight banner */}
-        <div
+        <motion.div
+          variants={fadeUp}
           className="mt-12 p-6 sm:p-8 rounded-2xl text-center"
           style={{
             background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))",
@@ -191,8 +211,8 @@ export default function FeaturesSection() {
               </span>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

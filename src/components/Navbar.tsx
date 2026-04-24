@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "项目简介", href: "#hero" },
@@ -99,36 +100,43 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          className="md:hidden border-t"
-          style={{
-            background: "rgba(5, 8, 22, 0.95)",
-            borderColor: "rgba(99,102,241,0.15)",
-          }}
-        >
-          <div className="px-4 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t overflow-hidden"
+            style={{
+              background: "rgba(5, 8, 22, 0.95)",
+              borderColor: "rgba(99,102,241,0.15)",
+            }}
+          >
+            <div className="px-4 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-slate-400 hover:text-white transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
-                className="text-slate-400 hover:text-white transition-colors"
-                onClick={() => setMenuOpen(false)}
+                href="https://ai.codefather.cn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-400 hover:text-indigo-300"
               >
-                {link.label}
+                在线阅读 →
               </a>
-            ))}
-            <a
-              href="https://ai.codefather.cn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-400 hover:text-indigo-300"
-            >
-              在线阅读 →
-            </a>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
