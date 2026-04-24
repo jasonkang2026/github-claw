@@ -77,7 +77,7 @@ const updates = [
 
 export default function ChangelogSection() {
   return (
-    <section id="changelog" className="relative py-24 px-4 sm:px-6">
+    <section id="changelog" aria-labelledby="changelog-title" className="relative py-24 px-4 sm:px-6">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -105,7 +105,7 @@ export default function ChangelogSection() {
           >
             📋 更新日志
           </div>
-          <h2 className="section-heading text-white mb-4">
+          <h2 id="changelog-title" className="section-heading text-white mb-4">
             持续迭代，<span className="gradient-text">不断完善</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -126,7 +126,7 @@ export default function ChangelogSection() {
 
           <div className="space-y-8">
             {updates.map((update, i) => (
-              <motion.div key={i} variants={fadeUp} className="relative flex gap-6 sm:gap-8">
+              <motion.article key={i} variants={fadeUp} className="relative flex gap-6 sm:gap-8">
                 {/* Dot */}
                 <div
                   className="relative flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-xl sm:text-2xl z-10"
@@ -179,7 +179,7 @@ export default function ChangelogSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -192,6 +192,7 @@ export default function ChangelogSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium text-slate-400 hover:text-white glass-card transition-all duration-200"
             style={{ border: "1px solid rgba(99,102,241,0.2)" }}
+            aria-label="查看 AI Guide 在 GitHub 上的完整提交历史"
           >
             查看完整提交历史
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

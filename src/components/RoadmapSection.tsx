@@ -86,7 +86,7 @@ const statusConfig = {
 
 export default function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative py-24 px-4 sm:px-6">
+    <section id="roadmap" aria-labelledby="roadmap-title" className="relative py-24 px-4 sm:px-6">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -114,7 +114,7 @@ export default function RoadmapSection() {
           >
             🗺️ 内容路线图
           </div>
-          <h2 className="section-heading text-white mb-4">
+          <h2 id="roadmap-title" className="section-heading text-white mb-4">
             系统化的 <span className="gradient-text">学习路径</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -139,7 +139,7 @@ export default function RoadmapSection() {
               const isRight = i % 2 === 0;
 
               return (
-                <motion.div
+                <motion.article
                   key={i}
                   variants={fadeUp}
                   className={`relative flex items-start gap-6 md:gap-0 ${
@@ -206,7 +206,7 @@ export default function RoadmapSection() {
 
                   {/* Spacer for opposite side */}
                   <div className="hidden md:block w-5/12" />
-                </motion.div>
+                </motion.article>
               );
             })}
           </div>

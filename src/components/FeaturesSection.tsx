@@ -83,7 +83,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="relative py-24 px-4 sm:px-6">
+    <section id="features" aria-labelledby="features-title" className="relative py-24 px-4 sm:px-6">
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -112,7 +112,7 @@ export default function FeaturesSection() {
           >
             ✨ 精选内容
           </div>
-          <h2 className="section-heading text-white mb-4">
+          <h2 id="features-title" className="section-heading text-white mb-4">
             一站式 <span className="gradient-text">AI 学习</span> 平台
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -123,7 +123,7 @@ export default function FeaturesSection() {
         {/* Feature Grid */}
         <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, i) => (
-            <motion.div
+            <motion.article
               key={i}
               variants={fadeUp}
               className="glass-card p-6 group cursor-pointer transition-all duration-300 hover:-translate-y-1"
@@ -174,13 +174,14 @@ export default function FeaturesSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-sm font-medium transition-all duration-200 hover:gap-2"
                 style={{ color: feature.accent }}
+                aria-label={`查看${feature.title}`}
               >
                 {feature.linkText}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 

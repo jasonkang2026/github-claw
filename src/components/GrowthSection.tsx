@@ -287,7 +287,7 @@ const achievements = [
 
 export default function GrowthSection() {
   return (
-    <section id="growth" className="relative py-24 px-4 sm:px-6">
+    <section id="growth" aria-labelledby="growth-title" className="relative py-24 px-4 sm:px-6">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -315,7 +315,7 @@ export default function GrowthSection() {
           >
             📈 增长趋势
           </div>
-          <h2 className="section-heading text-white mb-4">
+          <h2 id="growth-title" className="section-heading text-white mb-4">
             数字见证，<span className="gradient-text">影响力爆发</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -349,10 +349,10 @@ export default function GrowthSection() {
         </motion.div>
 
         {/* Star history chart */}
-        <motion.div variants={fadeUp} className="glass-card p-6 sm:p-8">
+        <motion.section variants={fadeUp} className="glass-card p-6 sm:p-8" aria-labelledby="growth-chart-title">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-bold text-white mb-1">⭐ GitHub Stars 增长历史</h3>
+              <h3 id="growth-chart-title" className="text-lg font-bold text-white mb-1">⭐ GitHub Stars 增长历史</h3>
               <p className="text-sm text-slate-400">liyupi/ai-guide · 2025年2月至今</p>
             </div>
             <a
@@ -360,12 +360,13 @@ export default function GrowthSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-indigo-400 hover:text-indigo-300 underline"
+              aria-label="查看 AI Guide 完整 GitHub Star 增长历史"
             >
               查看完整历史 →
             </a>
           </div>
           <StarChart />
-        </motion.div>
+        </motion.section>
 
         {/* Trending badges */}
         <motion.div variants={stagger} className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
