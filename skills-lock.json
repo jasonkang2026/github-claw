@@ -5,6 +5,11 @@
       "source": "inferen-sh/skills",
       "sourceType": "github",
       "computedHash": "19eafab7e57b1ee5a3dd9b69cdce428be9cbf4a6239d53d38559d1a5352b903e"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "ddd028951738fcbcdebf0f9bd90b708c55d1b9370a31603e0c13e5b262d8b8bb"
     }
   }
 }
