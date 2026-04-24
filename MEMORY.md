@@ -16,6 +16,7 @@
 
 <!-- 记录重大选择、架构决策、已验证的方案 -->
 - 2026-04-24：初始化仓库为个人 AI 工作空间，核心文件为 AGENTS.md
+- 2026-04-24：为 Shipment-Monitoring-Dashboard 创建导航官网，部署在 https://jasonkang2026.github.io/github-claw/
 
 ---
 
@@ -25,6 +26,7 @@
 - 仓库：jasonkang2026/github-claw
 - AI 助手：GitHub Copilot（网页版）
 - 工作空间初始化完成，可开始使用
+- 导航官网：docs/index.html，通过 GitHub Actions 部署到 GitHub Pages（.github/workflows/pages.yml）
 
 ---
 
