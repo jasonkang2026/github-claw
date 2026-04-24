@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
-
-const baseUrl = "https://jasonkang2026.github.io/github-claw";
+import { SITE_URL } from "@/config/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,

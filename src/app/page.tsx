@@ -7,6 +7,7 @@ import ChangelogSection from "@/components/ChangelogSection";
 import GrowthSection from "@/components/GrowthSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { SITE_URL } from "@/config/site";
 
 export default function Home() {
   const jsonLd = {
@@ -14,8 +15,8 @@ export default function Home() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://jasonkang2026.github.io/github-claw#website",
-        url: "https://jasonkang2026.github.io/github-claw",
+        "@id": `${SITE_URL}#website`,
+        url: SITE_URL,
         name: "AI Guide 导航官网",
         description:
           "程序员鱼皮的 AI 知识库导航站，汇总 Vibe Coding、DeepSeek、提示词大全与 AI 工具测评。",
@@ -38,14 +39,14 @@ export default function Home() {
       },
       {
         "@type": "CollectionPage",
-        "@id": "https://jasonkang2026.github.io/github-claw#webpage",
-        url: "https://jasonkang2026.github.io/github-claw",
+        "@id": `${SITE_URL}#webpage`,
+        url: SITE_URL,
         name: "AI Guide 导航官网｜程序员鱼皮的 AI 知识库",
         description:
           "面向开发者、新手、产品经理和创业者的 AI 学习导航页，覆盖 AI 教程、工具测评、提示词、路线图与更新日志。",
         inLanguage: "zh-CN",
         isPartOf: {
-          "@id": "https://jasonkang2026.github.io/github-claw#website",
+          "@id": `${SITE_URL}#website`,
         },
         about: {
           "@id": "https://github.com/liyupi/ai-guide#organization",

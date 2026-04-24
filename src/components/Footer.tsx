@@ -53,10 +53,9 @@ export default function Footer() {
                 { label: "增长趋势", href: "#growth" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
+                    <a
                       href={link.href}
                       className="text-sm text-slate-400 hover:text-indigo-400 transition-colors"
-                      aria-label={`跳转到${link.label}`}
                     >
                       {link.label}
                     </a>
@@ -82,7 +81,6 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-slate-400 hover:text-indigo-400 transition-colors"
-                      aria-label={`打开${link.label}`}
                     >
                       {link.label} ↗
                     </a>

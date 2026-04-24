@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_ORIGIN,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/config/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,20 +14,14 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteName = "AI Guide 导航官网";
-const siteTitle = "AI Guide 导航官网｜程序员鱼皮的 AI 知识库";
-const siteDescription =
-  "AI Guide 导航官网汇总程序员鱼皮的 AI 知识库、Vibe Coding 教程、DeepSeek 指南、提示词大全与 AI 工具测评，帮助开发者和新手系统化学习 AI。";
-const siteUrl = "https://jasonkang2026.github.io/github-claw";
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jasonkang2026.github.io"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
-    default: siteTitle,
-    template: `%s｜${siteName}`,
+    default: SITE_TITLE,
+    template: `%s｜${SITE_NAME}`,
   },
-  description: siteDescription,
-  applicationName: siteName,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "AI Guide",
     "AI知识库",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   publisher: "AI Guide",
   category: "technology",
   alternates: {
-    canonical: "/github-claw",
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -52,18 +53,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: siteTitle,
-    description: siteDescription,
-    url: siteUrl,
-    siteName,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "zh_CN",
   },
   twitter: {
     card: "summary",
-    title: siteTitle,
-    description: siteDescription,
-    creator: "@liyupi",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
 };
 
