@@ -1,0 +1,19 @@
+name: ui-ux-pro-max
+version: "1.0.0"
+description: >
+  Full-spectrum UI/UX optimization skill. Applies best practices for visual
+  design, motion, accessibility, and developer experience to any front-end
+  codebase. Covers design tokens, animation systems, dark-mode, responsive
+  layouts, and WCAG AA accessibility requirements.
+entry: README.md
+tags:
+  - frontend
+  - design
+  - accessibility
+  - animation
+install: install.sh
+requires:
+  node: ">=18"
+  packages:
+    - framer-motion
+    - lucide-react

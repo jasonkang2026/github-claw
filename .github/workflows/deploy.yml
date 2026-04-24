@@ -23,6 +23,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Discover agent skills
+        run: |
+          echo "=== Available agent skills ==="
+          for skill_dir in .agents/skills/*/; do
+            skill="${skill_dir%/}"
+            skill="${skill##*/}"
+            echo ""
+            echo "── $skill ──"
+            if [[ -f "$skill_dir/skill.yaml" ]]; then
+              grep -E "^(name|version|description):" "$skill_dir/skill.yaml" | head -5
+            fi
+          done
+          echo ""
+          echo "=== Activating required skills ==="
+          bash .agents/skills/nextjs-deploy/install.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -50,3 +66,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
