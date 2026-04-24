@@ -1,0 +1,19 @@
+name: ui-ux-pro-max
+version: "2.0.0"
+description: >
+  Full-spectrum UI/UX optimization skill for the ai-guide Next.js 16 site.
+  Applies Tailwind v4 design tokens, framer-motion entrance animations,
+  WCAG AA accessibility, responsive layout, dark-first color system, and
+  fixes known globals.css conflicts. Replaces the incorrect v1.0.0.
+entry: README.md
+tags:
+  - frontend
+  - design
+  - accessibility
+  - animation
+  - framer-motion
+install: install.sh
+requires:
+  node: ">=18"
+  packages:
+    - framer-motion

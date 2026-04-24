@@ -1,0 +1,16 @@
+name: nextjs-deploy
+version: "1.0.0"
+description: >
+  Skill for building and deploying a Next.js application as a static export
+  to GitHub Pages. Covers next.config.ts options, basePath, image optimisation
+  bypass, .nojekyll, artifact upload, and the actions/deploy-pages workflow.
+entry: README.md
+tags:
+  - nextjs
+  - github-pages
+  - ci-cd
+  - deployment
+install: install.sh
+requires:
+  node: ">=18"
+  packages: []
